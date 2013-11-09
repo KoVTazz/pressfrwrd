@@ -1,8 +1,15 @@
-<h1>Welcome to Pressfrwrd.com</h1>
-<p>
-  this site is being created for the people who like to be creative. For the ones who would love to share and collaborate the workings of their minds to better themselves, their communities, and leave a standing footprint that they have been a part of positive change. Welcome to Pressfrwrd, we look forward to seeing how you'll change the world.
-</p>
-  <%= link_to "Sign up now!", '#', class: "btn btn-large btn-primary" %>
-</div>
-
-<%= link_to image_tag("rails.png", alt: "Rails"), 'http://rubyonrails.org/' %>
+<% provide(:title, 'Home') %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ruby on Rails Tutorial Sample App | <%= yield(:title) %></title>
+  </head>
+  <body>
+    <h1>Sample App</h1>
+    <p>
+      This is the home page for the
+      <a href="http://railstutorial.org/">Ruby on Rails Tutorial</a>
+      sample application.
+    </p>
+  </body>
+</html>
