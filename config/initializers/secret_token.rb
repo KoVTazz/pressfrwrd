@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Pressfrwrd::Application.config.secret_key_base = '51f069557d7e601af27a69c054bcd124d7aa445cef3bf8333dc9a37febe50617b7f989838d771bdbf01dcf85262d2581419916c426d27ef200dad3bef157d970'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store it in token_file.
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+Pressfrwrd::Application.config.secret_key_base = secure_token
